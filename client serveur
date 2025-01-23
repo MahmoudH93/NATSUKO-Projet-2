@@ -1,0 +1,15 @@
+    while True:
+        try:
+            client_socket.sendto("ping".encode(), (server_host, server_port))
+            print("Envoyé : ping")
+            response, _ = client_socket.recvfrom(1024)
+            if response.decode() == "pong":
+                print(f"Reçu : {response.decode()}")
+            time.sleep(1)
+            
+        except KeyboardInterrupt:
+            client_socket.sendto("fin".encode(), (server_host, server_port))
+            print("Client arrêté.")
+            break
+        
+
