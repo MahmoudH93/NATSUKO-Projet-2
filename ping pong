@@ -1,0 +1,29 @@
+import socket
+import time
+import random 
+
+def serveur():
+    host = '127.0.0.1'
+    port = 12345
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    server_socket.bind((host, port))
+    print(f"serveur en écoute sur {host}:{port}...")
+
+
+
+def client():
+    server_host = '127.0.0.1'
+    server_port = 12345
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    print(f"client connecté au serveur {server_host}:{server_port}")
+
+
+
+if __name__ == __"main"__:
+    choix = input("tapez 'serveur' pour démarrer le serveur ou 'client' pour démarrer le client : ").strip().lower()
+    if choix == "serveur":
+        serveur()
+    elif choix == "client":
+        client()
+    else:
+        print("choix invalide. Veuillez redémarrer le script et taper 'serveur' ou 'client'.")
