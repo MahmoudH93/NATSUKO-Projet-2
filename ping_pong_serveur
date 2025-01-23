@@ -1,0 +1,14 @@
+while True:
+        try:
+            message, client_address = server_socket.recvfrom(1024)
+            if message.decode() == "ping":
+                if random.randint(0,6)>1:
+                    print(f"reçu 'ping' de {client_address}")
+                    server_socket.sendto("pong".encode(), client_address)
+                else:
+                    server_socket.sendto("error".encode(), client_address)
+            else:
+                print("connexion avec client perdu.")
+        except:
+            print("Une erreur est survenue dans le serveur.")
+            break
